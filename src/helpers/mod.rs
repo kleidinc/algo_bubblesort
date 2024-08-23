@@ -2,8 +2,8 @@ pub mod get {
     use std::io;
     use std::io::Write;
 
-    fn get_i32(prompt: &str) -> i32 {
-        print!("{prompt}");
+    pub fn get_i32(prompt: &str) -> i32 {
+        print!("{prompt}: ");
         io::stdout().flush().unwrap();
 
         let mut str_value = String::new();
@@ -79,7 +79,7 @@ pub mod print_vec {
         }
 
         let mut string = String::new();
-        string.push_str("[]");
+        string.push_str("[");
 
         for i in 1usize..max {
             string.push_str(" ");
