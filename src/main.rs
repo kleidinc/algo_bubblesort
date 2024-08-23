@@ -35,8 +35,6 @@ fn main() {
 
     let max_print = helpers::get::get_i32("How many items to print ");
     helpers::print_vec::print_vec(&vec, max_print);
-    // 2. sort the vector using bubblesort
-    // 3. print the sorted version to the terminal
 }
 
 mod helpers;
