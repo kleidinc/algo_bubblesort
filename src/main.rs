@@ -1,3 +1,5 @@
+use std::time::{Duration, Instant};
+
 fn bubblesort(collection: &mut Vec<i32>) {
     // make a clone for immutable access
     let mut collection_clone = collection.clone();
@@ -22,10 +24,17 @@ fn bubblesort(collection: &mut Vec<i32>) {
 
 fn main() {
     // 1. reate vector with random numbers
-    let user_input = helpers::get::get_i32("Type a number and press enter");
-    let mut vec = helpers::make_random_vec::make_random_vec(500, user_input);
+    let num_items = helpers::get::get_i32("Amount of elements in the vec ");
+    let max = helpers::get::get_i32("Max ");
+    let mut vec = helpers::make_random_vec::make_random_vec(num_items, max);
+
+    let start_timer = Instant::now();
     bubblesort(&mut vec);
-    helpers::print_vec::print_vec(&vec, 50);
+    let duration = start_timer.elapsed();
+    println!("The sorting took {:?} seconds!", duration);
+
+    let max_print = helpers::get::get_i32("How many items to print ");
+    helpers::print_vec::print_vec(&vec, max_print);
     // 2. sort the vector using bubblesort
     // 3. print the sorted version to the terminal
 }
