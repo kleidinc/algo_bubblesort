@@ -1,3 +1,4 @@
+use is_sorted::IsSorted;
 use std::time::{Duration, Instant};
 
 fn bubblesort(collection: &mut Vec<i32>) {
@@ -22,6 +23,11 @@ fn bubblesort(collection: &mut Vec<i32>) {
     }
 }
 
+fn check_sorted(collection: &mut Vec<i32>) {
+    IsSorted::is_sorted(&mut collection.iter());
+    println!("The vector is sorted!");
+}
+
 fn main() {
     // 1. reate vector with random numbers
     let num_items = helpers::get::get_i32("Amount of elements in the vec ");
@@ -31,10 +37,15 @@ fn main() {
     let start_timer = Instant::now();
     bubblesort(&mut vec);
     let duration = start_timer.elapsed();
-    println!("The sorting took {:?} seconds!", duration);
+    println!(
+        "The sorting took {:?} milli-seconds !",
+        duration.as_millis()
+    );
 
     let max_print = helpers::get::get_i32("How many items to print ");
     helpers::print_vec::print_vec(&vec, max_print);
+
+    check_sorted(&mut vec);
 }
 
 mod helpers;
